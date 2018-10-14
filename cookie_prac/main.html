@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <script>
+        var setCookie = function(name, value) {
+            document.cookie = namae + '=' + value + ';';
+        };
+
+        var getCookie = function(name) {
+            var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return value? value[2] : null;
+        };
+
+        var deleteCookie = function(name) {
+            document.cookie = name + '=;';
+        };
+
+        var inputid = function () {
+            var username = document.getElementById('name');
+            setCookie('name', username);
+        };
+
+        if ( !getCookie('check_oneday')) {
+            window.open("popup.html", "yuha", "height=600, width=400");
+        }
+    </script>
+</head>
+<body>
+name : <input type="text" id="name"/><button onclike="inputid()">input</button><br>
+<button onclick="deleteCookie('check_oneday')">쿠키 삭제</button>
+
+</body>
+</html>

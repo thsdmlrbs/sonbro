@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup test for cookies</title>
+    <script>
+        function closebtn() {
+            var is_check = document.getElementById('check_oneday');
+            if ( is_check && is_check.checked === true ) {
+                document.cookie = "check_oneday=1";
+            }
+            console.log(document.cookie);
+            self.close();
+        }
+    </script>
+</head>
+<body>
+<img src="Yoha.gif" alt="Smiley face" height="400" width="300"><br>
+<input type="checkbox" id="check_oneday"> 하루동안 보지 않기<br>
+<button onclick="closebtn()">Close</button>
+</body>
+</html>
