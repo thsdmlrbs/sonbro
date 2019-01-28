@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <title>반올림 알고리thm</title>
     <script>
-        var setCookie = function(name, value) {
-            document.cookie = namae + '=' + value + ';';
+
+        function inputid() {
+
+            var num = document.getElementById('num').value;
+            var round = +document.getElementById('round').value +1;
+
+            if(num.indexOf(".") > -1)
+            {
+                var first = num.substring(0, num.indexOf("."));
+                var second = num.substr(num.indexOf(".")+1, round-1)
+                var thr = second.charAt(round) > 4 ? 1 : 0;
+
+                var val = +(first+second)+thr;
+                var val = val+'';
+
+                var rst = '';
+                console.log(first.length)
+                console.log(round)
+
+                for(var i = 0; i < val.length; i++)
+                {
+                    rst += val.charAt(i);
+                    if(i == (first.length+round-1))
+                    {
+                        rst += '.';
+                    }
+                }
+
+                document.getElementById('value').innerHTML = rst;
+
+            }
+            else
+            {
+                document.getElementById('value').innerHTML = num;
+            }
         };
 
-        var getCookie = function(name) {
-            var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-            return value? value[2] : null;
-        };
-
-        var deleteCookie = function(name) {
-            document.cookie = name + '=;';
-        };
-
-        var inputid = function () {
-            var username = document.getElementById('name');
-            setCookie('name', username);
-        };
-
-        if ( !getCookie('check_oneday')) {
-            window.open("popup.html", "yuha", "height=600, width=400");
-        }
     </script>
 </head>
 <body>
-name : <input type="text" id="name"/><button onclike="inputid()">input</button><br>
-<button onclick="deleteCookie('check_oneday')">쿠키 삭제</button>
+소수점 : <input type="number" id="num"/><br>
+자리수 : <input type="number" id="round"/><button onclick="inputid()">input</button><br>
+<span id="value"></span>
 
 </body>
 </html>
